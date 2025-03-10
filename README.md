@@ -5,7 +5,7 @@ public class Main {
     public Main() {
     }
 
-    public static void main(String[] args) {
+public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> (new HackingToolFrame()).setVisible(true));
     }
 }
@@ -38,7 +38,7 @@ public class HackingToolFrame extends JFrame {
     private JButton attackButton;
     private JButton dosButton;
 
-    public HackingToolFrame() {
+public HackingToolFrame() {
         this.setTitle("모의 해킹툴");
         this.setSize(700, 500);
         this.setDefaultCloseOperation(3);
@@ -78,7 +78,7 @@ public class HackingToolFrame extends JFrame {
         });
     }
 
-    private void startPortScan() {
+ private void startPortScan() {
         final String target = this.inputTextField.getText();
         String startPortStr = this.portRangeStartField.getText();
         String endPortStr = this.portRangeEndField.getText();
@@ -96,7 +96,7 @@ public class HackingToolFrame extends JFrame {
                 return;
             }
 
-            this.outputArea.setText("");
+this.outputArea.setText("");
             this.outputArea.append("포트 스캔 시작: " + target + "\n");
             (new SwingWorker<Void, String>() {
                 protected Void doInBackground() throws Exception {
@@ -110,36 +110,36 @@ public class HackingToolFrame extends JFrame {
                             this.publish(new String[]{"포트 " + port + " 닫힘"});
                         }
 
-                        Thread.sleep(200L);
+Thread.sleep(200L);
                     }
 
-                    return null;
+return null;
                 }
 
-                protected void process(List<String> chunks) {
+protected void process(List<String> chunks) {
                     for(String chunk : chunks) {
                         HackingToolFrame.this.outputArea.append(chunk + "\n");
                     }
 
-                }
+}
 
-                protected void done() {
+protected void done() {
                     HackingToolFrame.this.outputArea.append("포트 스캔 완료!\n");
 
-                    try (FileWriter writer = new FileWriter("port_scan_results.txt")) {
+try (FileWriter writer = new FileWriter("port_scan_results.txt")) {
                         writer.write(HackingToolFrame.this.outputArea.getText());
                     } catch (IOException var6) {
                         JOptionPane.showMessageDialog(HackingToolFrame.this, "파일 저장 중 오류 발생.");
                     }
 
-                }
+}
             }).execute();
         } else {
             JOptionPane.showMessageDialog(this, "모든 필드를 입력해주세요.");
         }
     }
 
-    private void startDosAttack() {
+ private void startDosAttack() {
         final String target = this.inputTextField.getText();
         String startPortStr = this.portRangeStartField.getText();
         String endPortStr = this.portRangeEndField.getText();
@@ -156,8 +156,7 @@ public class HackingToolFrame extends JFrame {
                 JOptionPane.showMessageDialog(this, "올바른 포트 번호를 입력해주세요.");
                 return;
             }
-
-            this.outputArea.setText("");
+ this.outputArea.setText("");
             this.outputArea.append("DoS 공격 시작: " + target + "\n");
             (new SwingWorker<Void, String>() {
                 protected Void doInBackground() throws Exception {
@@ -174,17 +173,17 @@ public class HackingToolFrame extends JFrame {
                         }
                     }
 
-                    return null;
+   return null;
                 }
 
-                protected void process(List<String> chunks) {
+  protected void process(List<String> chunks) {
                     for(String chunk : chunks) {
                         HackingToolFrame.this.outputArea.append(chunk + "\n");
                     }
 
-                }
-
-                protected void done() {
+ }
+                
+protected void done() {
                     HackingToolFrame.this.outputArea.append("DoS 공격 완료!\n");
                 }
             }).execute();
@@ -193,7 +192,7 @@ public class HackingToolFrame extends JFrame {
         }
     }
 
-    public static void main(String[] args) {
+public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> (new HackingToolFrame()).setVisible(true));
     }
 }
