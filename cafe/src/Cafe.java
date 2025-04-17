@@ -10,8 +10,8 @@ public class Cafe {
         String[] size = {"Small", "Medium", "Large"};
         int[] add_prices = {500, 1000};
 
-        String[] ob = {"샷 추가", "시럽 추가", "샷과 시럽 모두 추가"};
-        int[] add_ob = {500, 300, 800};
+        String[] ob = {"기본","샷 추가", "시럽 추가", "샷과 시럽 모두 추가"};
+        int[] add_ob = {0, 500 , 300, 800};
 
         System.out.println("=== 카페 음료 가격 계산기 ===");
         for (int i = 0; i < menu.length; i++) {
@@ -29,9 +29,9 @@ public class Cafe {
             System.out.println((i + 1) + ". " + ob[i] + " - " + add_ob[i] + "원");
         }
 
-        System.out.print("음료 번호를 선택하세요: ");
+        System.out.print("커피 번호를 선택하세요: ");
         int choice = scanner.nextInt();
-        System.out.println("음료 사이즈를 선택하세요: ");
+        System.out.println("커피 사이즈를 선택하세요: ");
         int size_choice = scanner.nextInt();
         System.out.println("옵션을 선택하세요: ");
         int ob_choice = scanner.nextInt();
